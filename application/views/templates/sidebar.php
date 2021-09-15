@@ -18,7 +18,7 @@
 			<ul class="list-unstyled navbar__list">
 				<li class="active has-sub">
 					<a class="js-arrow" href="#">
-						<i class="fas fa-user"></i>Admin
+						<i class="fas fa-box"></i>Product
 						<span class="arrow">
 							<i class="fas fa-angle-down"></i>
 						</span>
@@ -26,8 +26,12 @@
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
 
 						<li>
-							<a href="<?= base_url('Admin/') ?>">
-								<i class="fas fa-angle-right"></i>Product</a>
+							<a href="<?= base_url('product/') ?>">
+								<i></i>All Product</a>
+						</li>
+						<li>
+							<a href="<?= base_url('category/') ?>">
+								<i></i>Category</a>
 						</li>
 					</ul>
 				</li>
