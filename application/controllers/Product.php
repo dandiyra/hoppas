@@ -31,23 +31,30 @@ class Product extends CI_Controller
         $product = $this->M_Product->listing();
         $data = [
             'title'         => 'Product',
-            'product'      => $product,
+            'product'       => $product,
             'users'         => $this->db->get_where('users', ['email' => 
                                 $this->session->userdata('email')])->row_array(),
+            'category'      => $this->db->get('categori')->result_array(),
         ];
 
-        $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');
-        $this->form_validation->set_rules('slug_kategori', 'Slug Kategori', 'required');
+        $this->form_validation->set_rules('nama_produk', 'Nama Produk', 'required');
+        $this->form_validation->set_rules('kode_produk', 'Kode Produk', 'required|is_unique');
+        $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
+        $this->form_validation->set_rules('harga', 'Harga', 'required');
         $this->form_validation->set_rules('urutan', 'Urutan', 'required');
 
     
         if ($this->form_validation->run() == FALSE) {
+
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
             $this->load->view('product/addproduct', $data);
             $this->load->view('templates/footer');
+
+            
         }else {
+            
             $slug_kategori          = url_title($this->input->post('nama_kategori'), 'dash', TRUE);
 
             $data = [

@@ -42,10 +42,19 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js">
 </script>
 
+<!-- CkEditor -->
+<script type="text/javascript" src="<?= base_url('assets/'); ?>ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/'); ?>ckeditor/samples/js/sample.js"></script>
+
+
+
 <!-- Main JS-->
 <script src="<?= base_url('assets/admin/'); ?>js/main.js"></script>
 <script src="<?= base_url('assets/admin/'); ?>js/starlight.js"></script>
 
+<script>
+	initSample();
+</script>
 
 <script>
 	$('.custom-file-input').on('change', function () {

@@ -11,55 +11,89 @@
 							<p class="mg-b-20 mg-sm-b-30"></p>
 							<div class="login-form">
 								<form action="<?= base_url('admin/register'); ?>" method="post">
-
 									<div class="form-group">
-										<input type="text" class="form-control form-control-user" id="nama_produk" name="nama_produk"
-											placeholder="Procut Name" value="<?= set_value('nama_produk'); ?>">
-										<?= form_error('name', ' <small class="text-danger pl-3">', '</small>'); ?>
+										<input type="text" class="form-control form-control-user" id="nama_produk"
+											name="nama_produk" placeholder="Name Product">
+										<?= form_error('nama_produk', ' <small class="text-danger pl-3">', '</small>'); ?>
 									</div>
-									<div class="form-group">
-										<input type="text" class="form-control form-control-user" id="nama_kategori"
-											name="nama_kategori" placeholder="Category"
-											value="<?= set_value('telephone'); ?>">
-										<?= form_error('telephone', ' <small class="text-danger pl-3">', '</small>'); ?>
-									</div>
-									<div class="form-group">
-										<input class="form-control form-control-user" type="text" id="email"
-											name="email" placeholder="Email" value="<?= set_value('email'); ?>">
-										<?= form_error('email', ' <small class="text-danger pl-3">', '</small>'); ?>
-									</div>
-									<div class="form-group row">
-										<div class="col-sm-6 mb-3 mb-sm-0">
-											<input type="password" class="form-control form-control-user" id="password1"
-												name="password1" placeholder="Password">
-											<?= form_error('password1', ' <small class="text-danger pl-3">', '</small>'); ?>
-										</div>
-										<div class="col-sm-6 mb-3 mb-sm-0">
-											<input type="password" class="form-control form-control-user" id="password2"
-												name="password2" placeholder="Repeat Password">
-										</div>
-									</div>
-									<div class="form-group">
-										<select type="text" class="form-control form-control-user" id="role_id"
-											name="role_id" placeholder="Role ID" value="<?= set_value('role_id'); ?>">
-											<option selected disabled>--Select Role--</option>
-											<?php foreach ($users_role as $u) : ?>
-											<option value="<?= $u['id']?>"><?= $u['role']?></option>
-											<?php endforeach; ?>
-										</select>
-										<?= form_error('role_id', ' <small class="text-danger pl-3">', '</small>'); ?>
-									</div>
-									<button class="au-btn au-btn--block au-btn--green m-b-20"
-										type="submit">register</button>
-								</form>
 							</div>
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<select type="text" class="form-control form-control-user" id="id_kategori"
+										name="id_kategori" placeholder="Category"
+										value="<?= set_value('id_kategori'); ?>">
+										<option selected disabled>-- Select Category --</option>
+										<?php foreach ($category as $c) : ?>
+										<option value="<?= $c['id_kategori']?>"><?= $c['nama_kategori']?></option>
+										<?php endforeach; ?>
+									</select>
+									<?= form_error('id_kategori', ' <small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="text" class="form-control form-control-user" id="kode_produk"
+										name="kode_produk" placeholder="Code Product">
+									<?= form_error('kode_produk', ' <small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="number" class="form-control form-control-user" id="stock" name="stock"
+										placeholder="Stock">
+									<?= form_error('stock', ' <small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="number" class="form-control form-control-user" id="harga" name="harga"
+										placeholder="Price">
+									<?= form_error('harga', ' <small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="text" class="form-control form-control-user" id="ukuran" name="ukuran"
+										placeholder="Size">
+									<?= form_error('ukuran', ' <small class="text-danger pl-3">', '</small>'); ?>
+								</div>
+								<div class="col-sm-6 mb-3 mb-sm-0">
+									<input type="text" class="form-control form-control-user" id="berat" name="berat"
+										placeholder="Weight">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlTextarea1">Description</label>
+								<textarea class="form-control" id="editor" name="keterangan" rows="4"></textarea>
+								<?= form_error('keterangan', ' <small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlTextarea1">Keywords (For Seo Google)</label>
+								<textarea class="form-control" id="keywords" name="keywords" rows="1"></textarea>
+								<?= form_error('keywords', ' <small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<div class="form-group">
+								<label for="gambar">Product Picture</label>
+								<input type="file" class="form-control form-control-user" id="gambar"
+									name="gambar">
+								<?= form_error('gambar', ' <small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<div class="form-group">
+								<label for="status_produk">Product Status</label>
+								<select type="text" class="form-control form-control-user" id="status_produk"
+										name="status_produk" placeholder="Status Product"
+										value="<?= set_value('status_produk'); ?>">
+										<option selected disabled>-- Status Product --</option>
+										<option value="1">Active</option>
+										<option value="0">InActive</option>
+									</select>
+									<?= form_error('id_kategori', ' <small class="text-danger pl-3">', '</small>'); ?>
+								<?= form_error('gambar', ' <small class="text-danger pl-3">', '</small>'); ?>
+							</div>
+							<button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Add Product</button>
+							</form>
 						</div>
 					</div>
-					<!--  END TOP CAMPAIGN-->
 				</div>
-			</div><!-- sl-mainpanel -->
-			<!-- </div> -->
-		</div>
-
-	</div>.
-	</body>
+				<!--  END TOP CAMPAIGN-->
+			</div>
+		</div><!-- sl-mainpanel -->
+	</div>
+</div>
+</body>
