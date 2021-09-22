@@ -16,7 +16,7 @@
 		</div>
 		<nav class="navbar-sidebar">
 			<ul class="list-unstyled navbar__list">
-				<li class="active has-sub">
+				<li>
 					<a class="js-arrow" href="#">
 						<i class="fas fa-box"></i>Product
 						<span class="arrow">
@@ -27,17 +27,17 @@
 
 						<li>
 							<a href="<?= base_url('product/') ?>">
-								<i></i>All Product</a>
+								<i class="fas fa-angle-right"></i>All Product</a>
 						</li>
 						<li>
 							<a href="<?= base_url('category/') ?>">
-								<i></i>Category</a>
+								<i class="fas fa-angle-right"></i>Category</a>
 						</li>
 					</ul>
 				</li>
-				<!-- <li class="active has-sub">
+				<li>
 					<a class="js-arrow" href="#">
-						<i class="fas fa-bars"></i>Menu
+						<i class="fas fa-cog"></i>Configuration Web
 						<span class="arrow">
 							<i class="fas fa-angle-down"></i>
 						</span>
@@ -45,19 +45,11 @@
 					<ul class="list-unstyled navbar__sub-list js-sub-list">
 
 						<li>
-							<a href="<?= base_url('Menu/') ?>">
-								<i class="fas fa-angle-right"></i>Menu Management</a>
-						</li>
-						<li>
-							<a href="<?= base_url('Menu/submenu') ?>">
-								<i class="fas fa-angle-right"></i>Subemnu Management</a>
-						</li>
-						<li>
-							<a href="<?= base_url('Admin/role') ?>">
-								<i class="fas fa-angle-right"></i>Role</a>
+							<a href="<?= base_url('Configuration/') ?>">
+								<i class="fas fa-angle-right"></i>Config Basic</a>
 						</li>
 					</ul>
-				</li> -->
+				</li>
 			</ul>
 		</nav>
 	</div>

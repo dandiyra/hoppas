@@ -1,3 +1,7 @@
+<?php 
+	// Load Configuration Website
+	$site		= $this->M_Config->listing();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="<?= base_url('assets/'); ?>user/images/icons/favicon.png" />
+	<!-- // Icon From Configuration Basic -->
+	<link rel="icon" type="image/png" href="<?= base_url('assets/images/produk/' .$site['icon']) ?>"/>
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/'); ?>user/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -35,7 +40,10 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/'); ?>user/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/'); ?>user/css/main.css">
 	<!--===============================================================================================-->
+
+	
 </head>
+
 
 <body class="animsition">
 

@@ -9,7 +9,7 @@
 							<h2 class="card-body-title"><?= $title ?></h2>
 							<?= form_error('menu', '<div class="alert alert-danger" role="alert">',' </div>'); ?>
 							<?= $this->session->flashdata('message'); ?>
-							<a href="<?= base_url('Product/addPro'); ?>" class="btn btn-sm btn-dark mb-3"
+							<a href="<?= base_url('Product/AddProduct'); ?>" class="btn btn-sm btn-dark mb-3"
 								style="float:right">Add New Product</a>
 							<p class="mg-b-20 mg-sm-b-30"><br></p>
 							<!-- <div class="table-wrapper"> -->
@@ -31,25 +31,22 @@
 									<?php foreach ($product as $p) : ?>
 									<tr>
 										<th scope="row"><?= $i ?></th>
-										<td><img src="<?= base_url('assets/admin/upload/image/thumbs/' .$p->gambar)?>"
+										<td><img src="<?= base_url('assets/images/produk/' .$p['gambar'])?>"
 												class="img img-responsive img-thumbnail" width="60">
 										</td>
 										<td><?= $p['nama_produk'] ?></td>
 										<td><?= $p['nama_kategori'] ?></td>
-										<td><?= $p['harga'] ?></td>
+										<td>Rp.<?= $p['harga'] ?></td>
 										<td><?= $p['status_produk'] ?></td>
 										<td><?= $p['stock'] ?></td>
 										<td>
-											<!-- <a href="#" class="badge badge-light"><i class="fa fa-edit"></i></a>
-												<a href="#" class="badge badge-dark" id="delete"><i
-														class="fa fa-trash"></i></a> -->
-											<a href="#" class="badge badge-light" data-toggle="modal"
-												data-target="#update<?= $p['id_kategori']; ?>"><i
-													class="fa fa-edit"></i></a>
-											<a href="<?= base_url('product/upPro/' . $p['id_produk'])?>"
-												class="badge badge-dark" id="delete"><i class="fa fa-trash"></i></a>
+											
+											<a href="<?= base_url('product/edit/' . $p['id_produk']) ?>"
+												class="badge badge-light"><i class=" fas fa-edit"></i></a>
 											<a href="<?= base_url('product/delPro/' . $p['id_produk'])?>"
 												class="badge badge-dark" id="delete"><i class="fa fa-trash"></i></a>
+
+										
 										</td>
 									</tr>
 									<?php $i++; ?>

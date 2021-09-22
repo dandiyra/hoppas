@@ -26,4 +26,9 @@ class M_Product extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function getProId($id_produk)
+    {
+        return $this->db->get_where('produk', ['id_produk' => $id_produk])->row_array();
+    }
 }
