@@ -24,18 +24,6 @@
 										<div class="card-body">
 											<h5 class="card-title">Name : <?= $users['name'] ?></h5>
 											<p class="card-text">Email : <?= $users['email'] ?></p>
-											<p class="card-text">Division : <?= $users['division'] ?></p>
-											<p class="card-text">Plan : <?= $users['plan'] ?></p>
-											<?php if ($users['role_id'] == 0) {
-                                                $users_role = 'AdminWeb';
-                                            } elseif ($users['role_id'] == 1) {
-                                                $users_role = 'Staff';
-                                            } elseif ($users['role_id'] == 2) {
-                                                $users_role = 'Kabag';
-                                            } elseif ($users['role_id'] == 3) {
-                                                $users_role = 'Direktur';
-                                            } ?>
-											<p class="card-text">Role : <?= $users_role ?></p>
 										</div>
 									</div>
 								</div>

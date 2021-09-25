@@ -27,7 +27,58 @@ class Category extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function AddCategory()
+    {
+            $data = [
+                'title'         => 'Add Category',
+                'users'          => $this->db->get_where('users', ['email' => 
+                                     $this->session->userdata('email')])->row_array(),
+                
+            ];
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('category/addcategory', $data);
+            $this->load->view('templates/footer');
+      
+    }
+
     public function addCat()
+    {
+        $config['upload_path'] = './assets/images/produk';
+        $config['allowed_types'] = 'jpg|png|gif|jpeg';
+        $config['max_size']             = 5000;
+        $config['max_width']            = 5000;
+        $config['max_height']           = 5000;
+
+        $this->load->library('upload', $config);
+
+        //Memasukan gambar produk
+        if (!empty($_FILES['gambar'])) {
+            $this->upload->do_upload('gambar');
+            $data1 = $this->upload->data('file_name');
+            $this->db->set('gambar', $data1);
+        }
+
+       
+        $nama_kategori          = $this->input->post('nama_kategori');
+        $slug_kategori          = url_title($this->input->post('nama_kategori'));
+        $urutan                 = $this->input->post('urutan');
+
+        $this->db->set('nama_kategori', $nama_kategori);
+        $this->db->set('slug_kategori', $slug_kategori);
+        $this->db->set('urutan', $urutan);
+       
+        $this->db->insert('categori');
+        $this->session->set_flashdata('message',
+        '<div class="alert alert-success" role="alert">
+           Category Added!   
+        </div>');
+        redirect('Category/');
+    }
+
+
+    public function addCatt()
     {
         $category = $this->M_Categori->listing();
         $data = [

@@ -1,3 +1,10 @@
+<?php 
+	// Load Configuration Website
+	$site		= $this->M_Config->listing();
+?>
+<?php
+	$navProdukFooter = $this->M_Config->navProduk();
+?>
 <!-- Footer -->
 <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
 	<div class="flex-w p-b-90">
@@ -8,16 +15,13 @@
 
 			<div>
 				<p class="s-text7 w-size27">
-					Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
-					(+1) 96 716 6879
+					<i class="fa fa-phone"></i> <?= nl2br($site['telephone'])?>
+					<br><i class="fa fa-envelope"></i> <?=($site['email'])?>
 				</p>
 
 				<div class="flex-m p-t-30">
-					<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-					<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-					<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-					<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-					<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+					<a href="<?=$site['facebook']?>" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+					<a href="<?=$site['instagram']?>" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
 				</div>
 			</div>
 		</div>
@@ -28,29 +32,13 @@
 			</h4>
 
 			<ul>
+				<?php foreach($navProdukFooter as $navProdukFooter) { ?>
 				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Men
+					<a href="<?=base_url('productdetail/kategori/'.$navProdukFooter->slug_kategori)?>" class="s-text7">
+						<?=$navProdukFooter->nama_kategori?>
 					</a>
 				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Women
-					</a>
-				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Dresses
-					</a>
-				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Sunglasses
-					</a>
-				</li>
+				<?php } ?>
 			</ul>
 		</div>
 
@@ -86,7 +74,7 @@
 			</ul>
 		</div>
 
-		<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+		<!-- <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
 			<h4 class="s-text12 p-b-30">
 				Help
 			</h4>
@@ -116,7 +104,7 @@
 					</a>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 
 		<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
 			<h4 class="s-text12 p-b-30">
@@ -141,26 +129,6 @@
 	</div>
 
 	<div class="t-center p-l-15 p-r-15">
-		<a href="#">
-			<img class="h-size2" src="<?= base_url('assets/'); ?>user/images/icons/paypal.png" alt="IMG-PAYPAL">
-		</a>
-
-		<a href="#">
-			<img class="h-size2" src="<?= base_url('assets/'); ?>user/images/icons/visa.png" alt="IMG-VISA">
-		</a>
-
-		<a href="#">
-			<img class="h-size2" src="<?= base_url('assets/'); ?>user/images/icons/mastercard.png" alt="IMG-MASTERCARD">
-		</a>
-
-		<a href="#">
-			<img class="h-size2" src="<?= base_url('assets/'); ?>user/images/icons/express.png" alt="IMG-EXPRESS">
-		</a>
-
-		<a href="#">
-			<img class="h-size2" src="<?= base_url('assets/'); ?>user/images/icons/discover.png" alt="IMG-DISCOVER">
-		</a>
-
 		<div class="t-center s-text8 p-t-20">
 			Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o"
 				aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -179,6 +147,7 @@
 
 <!-- Container Selection1 -->
 <div id="dropDownSelect1"></div>
+<div id="dropDownSelect2"></div>
 
 
 
@@ -195,6 +164,12 @@
 	$(".selection-1").select2({
 		minimumResultsForSearch: 20,
 		dropdownParent: $('#dropDownSelect1')
+	});
+
+	
+	$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect2')
 	});
 
 </script>
@@ -220,6 +195,13 @@
 		$(this).on('click', function () {
 			swal(nameProduct, "is added to wishlist !", "success");
 		});
+	});
+
+	$('.btn-addcart-product-detail').each(function(){
+			var nameProduct = $('.product-detail-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
 	});
 
 </script>

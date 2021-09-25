@@ -133,20 +133,13 @@ class Admin extends CI_Controller
         $data['title'] = 'Update';
         $data['users'] = $this->db->get_where('users', ['email' => 
         $this->session->userdata('email')])->row_array();
-        $data['plans'] = $this->db->get('plans')->result_array();
         $data['value'] = $this->db->get_where('users', ['id' => $id])->row_array(); 
-        $data['division'] = $this->db->get('division')->result_array();
-        $data['subDivision'] = $this->db->get('subDivision')->result_array();
 
 
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('telephone', 'Telephone', 'required');
-        $this->form_validation->set_rules('division', 'Division', 'required');
-        $this->form_validation->set_rules('subDivision', 'SubDivision');
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('cookies', 'Cookies');
-        $this->form_validation->set_rules('plan', 'Plan', 'required|trim');
-        $this->form_validation->set_rules('role_id', 'Role_id', 'required');
 
         if ($this->form_validation->run() == FALSE) {
 
@@ -159,11 +152,7 @@ class Admin extends CI_Controller
             $data = [
                 'email' => htmlspecialchars($this->input->post('email')),
                 'telephone' => htmlspecialchars($this->input->post('telephone')),
-                'division' => $this->input->post('division'),
-                'role_id' => $this->input->post('role_id'),
-                'subDivision' => $this->input->post('subDivision'),
                 'name' => $this->input->post('name'),
-                'plan' => $this->input->post('plan'),
                 'is_active' => 1
 
             ];

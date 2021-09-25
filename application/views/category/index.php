@@ -13,14 +13,14 @@
 							</div>
 							<?php endif ?>
 							<?= $this->session->flashdata('message'); ?>
-							<a href="#" class="btn btn-sm btn-dark mb-3" style="float:right" data-toggle="modal"
-								data-target="#exampleModal">Add New Category</a>
+							<a href="<?= base_url('Category/addCategory')?>" class="btn btn-sm btn-dark mb-3" style="float:right">Add New Category</a>
 							<p class="mg-b-20 mg-sm-b-30"><br></p>
 							<div class="table-wrapper">
 								<table class="table table-hover">
 									<thead>
 										<tr>
 											<th scope="col">#</th>
+											<th scope="col">Gambar</th>
 											<th scope="col">Name</th>
 											<th scope="col">Slug</th>
 											<th scope="col">Urutan</th>
@@ -32,6 +32,9 @@
 										<?php foreach ($category as $c) : ?>
 										<tr>
 											<th scope="row"><?= $i ?></th>
+											<td><img src="<?= base_url('assets/images/produk/' .$c['gambar'])?>"
+												class="img img-responsive img-thumbnail" width="60">
+											</td>
 											<td><?= $c['nama_kategori'] ?></td>
 											<td><?= $c['slug_kategori'] ?></td>
 											<td><?= $c['urutan'] ?></td>

@@ -26,6 +26,63 @@ class Product extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    // public function gamba($id_produk)
+    // {
+    //     $produk         = $this->M_Product->detail($id_produk);
+    //     $gambar         = $this->M_Product->gambar($id_produk);
+    // }
+
+    public function gambar($id_produk)
+    {
+        $produk         = $this->M_Product->detail($id_produk);
+        $gambar         = $this->M_Product->gambar($id_produk);
+        $data = [
+                'title'             => 'Add Gambar : '.$produk['nama_produk'],
+                'users'             => $this->db->get_where('users', ['email' => 
+                                        $this->session->userdata('email')])->row_array(),
+                'produk'            => $produk,
+                'gambar'            => $gambar,
+                
+            ];
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('product/addgambar', $data);
+            $this->load->view('templates/footer');
+      
+    }
+
+    public function addGam()
+    {
+        $config['upload_path'] = './assets/images/produk';
+        $config['allowed_types'] = 'jpg|png|gif|jpeg';
+        $config['max_size']             = 5000;
+        $config['max_width']            = 5000;
+        $config['max_height']           = 5000;
+
+        $this->load->library('upload', $config);
+
+        //Memasukan gambar produk
+        if (!empty($_FILES['gambar'])) {
+            $this->upload->do_upload('gambar');
+            $data1 = $this->upload->data('file_name');
+            $this->db->set('gambar', $data1);
+        }
+
+       
+        $id_produk      = $this->input->post('idProduct');
+        $judul_gambar   = $this->input->post('judul_gambar');
+       
+
+        $this->db->set('id_produk', $id_produk);
+        $this->db->set('judul_gambar', $judul_gambar);
+        $this->db->insert('gambar');
+        $this->session->set_flashdata('message',
+        '<div class="alert alert-success" role="alert">
+           Gambar Added!   
+        </div>');
+        redirect('Product/gambar/'. $id_produk);
+    }
 
     public function AddProduct()
     {

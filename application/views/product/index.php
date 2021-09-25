@@ -43,6 +43,8 @@
 											
 											<a href="<?= base_url('product/edit/' . $p['id_produk']) ?>"
 												class="badge badge-light"><i class=" fas fa-edit"></i></a>
+											<a href="<?= base_url('product/gambar/' . $p['id_produk']) ?>"
+												class="badge badge-warning"><i class=" fas fa-image"></i></a>
 											<a href="<?= base_url('product/delPro/' . $p['id_produk'])?>"
 												class="badge badge-dark" id="delete"><i class="fa fa-trash"></i></a>
 
