@@ -6,7 +6,7 @@
 	// Load Produk
 	include('Produk.php');
 	// Load Berita
-	include('berita.php');
+	// include('berita.php');
 	// Load Instagram
 	// include('instagram.php');
 ?>

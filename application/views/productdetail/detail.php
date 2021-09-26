@@ -49,10 +49,12 @@
 			<span class="m-text17">
 				Rp.<?= number_format($produk['harga'],'0',',','.' )?>
 			</span>
+
 			<!--  -->
 			<div class="p-b-45">
 				<span class="s-text8">Categories: <?=$produk['nama_kategori']?></span>
 			</div>
+
 
 			<!--  -->
 			<div class="wrap-dropdown-content bo6 p-t-15 p-b-14 active-dropdown-content">
@@ -69,18 +71,12 @@
 				</div>
 			</div>
 
-			<div class="wrap-dropdown-content bo7 p-t-15 p-b-14">
-				<h5 class="js-toggle-dropdown-content flex-sb-m cs-pointer m-text19 color0-hov trans-0-4">
-					Additional information
-					<i class="down-mark fs-12 color1 fa fa-minus dis-none" aria-hidden="true"></i>
-					<i class="up-mark fs-12 color1 fa fa-plus" aria-hidden="true"></i>
-				</h5>
-
-				<div class="dropdown-content dis-none p-t-15 p-b-23">
-					<p class="s-text8">
-						#
-					</p>
-				</div>
+			<div class="p-b-45">
+				<span class="m-text17">
+					<a href="<?= $site['facebook']?>" class="topbar-social-item fa fa-facebook"></a>
+					<a href="<?= $site['instagram']?>" class="topbar-social-item fa fa-instagram"></a>
+					<a href="#" class="topbar-social-item fa fa-line"></a>
+				</span>
 			</div>
 
 

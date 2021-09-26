@@ -17,6 +17,11 @@
 											name="nama_kategori" placeholder="Name Category" required>
 										<?= form_error('nama_kategori', ' <small class="text-danger pl-3">', '</small>'); ?>
 									</div>
+									<div class="form-group">
+										<input type="text" class="form-control form-control-user" id="urutan"
+											name="urutan" placeholder="Urutan" required>
+										<?= form_error('urutan', ' <small class="text-danger pl-3">', '</small>'); ?>
+									</div>
 										<div class="form-group">
 											<label for="gambar">Product Category</label>
 											<input type="file" class="form-control form-control-user" id="gambar"
