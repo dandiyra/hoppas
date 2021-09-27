@@ -13,15 +13,6 @@
 			<!-- Button show menu -->
 			<div class="btn-show-menu">
 				<!-- Header Icon mobile -->
-				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="<?= base_url('assets/'); ?>user/images/icons/icon-header-01.png" class="header-icon1"
-							alt="ICON">
-					</a>
-
-					<span class="linedivide2"></span>
-				</div>
-
 				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
 					<span class="hamburger-box">
 						<span class="hamburger-inner"></span>
@@ -81,10 +72,6 @@
 					</li>
 					<li class="item-menu-mobile">
 						<a href="<?=base_url('home/about')?>">About</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="contact.html">Contact</a>
 					</li>
 				</ul>
 			</nav>

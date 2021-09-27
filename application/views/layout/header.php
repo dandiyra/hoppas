@@ -59,10 +59,6 @@
 							<li>
 								<a href="<?=base_url('home/about/')?>">About</a>
 							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
 						</ul>
 					</nav>
 				</div>

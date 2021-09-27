@@ -45,7 +45,7 @@
 									<div class="form-group">
 										<input type="text" class="form-control form-control-user" id="facebook"
 											name="facebook" placeholder="Facebook"
-											value="<?= $configuration['facebook'] ?>" required>
+											value="<?= $configuration['facebook'] ?>">
 										<?= form_error('facebook', ' <small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<div class="form-group">

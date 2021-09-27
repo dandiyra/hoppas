@@ -70,11 +70,13 @@
 					</p>
 				</div>
 			</div>
-
+			<br>
 			<div class="p-b-45">
+				<span class="m-text10"> Bit Now! </span>
+				<br>
 				<span class="m-text17">
-					<a href="<?= $site['facebook']?>" class="topbar-social-item fa fa-facebook"></a>
-					<a href="<?= $site['instagram']?>" class="topbar-social-item fa fa-instagram"></a>
+					<!-- <a href="<?= $site['facebook']?>" class="topbar-social-item fa fa-facebook"></a> -->
+					<a href="<?= $site['instagram']?>" class="topbar-social-item fa fa-instagram"> All Bout Steal</a>
 					<a href="#" class="topbar-social-item fa fa-line"></a>
 				</span>
 			</div>

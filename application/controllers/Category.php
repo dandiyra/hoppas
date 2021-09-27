@@ -77,44 +77,102 @@ class Category extends CI_Controller
         redirect('Category/');
     }
 
-
-    public function addCatt()
-    {
-        $category = $this->M_Categori->listing();
+    public function EditCategory($id_kategori) {
         $data = [
-            'title'         => 'Category',
-            'category'      => $category,
-            'users'         => $this->db->get_where('users', ['email' => 
+            'title'          => 'Edit Category',
+            'categori'          => $this->db->get_where('categori', ['id_kategori' => $id_kategori])->row_array(),
+            'users'          => $this->db->get_where('users', ['email' => 
                                 $this->session->userdata('email')])->row_array(),
         ];
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('category/editcategory', $data);
+        $this->load->view('templates/footer');
+    }
 
-        $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');
-        $this->form_validation->set_rules('slug_kategori', 'Slug Kategori', 'required');
-        $this->form_validation->set_rules('urutan', 'Urutan', 'required');
+    public function editCat()
+    {   
+        $id_kategori            = $this->input->post('id_kategori');
+        $nama_kategori          = $this->input->post('nama_kategori');
+        $slug_kategori          = url_title($this->input->post('nama_kategori'));
+        $urutan                 = $this->input->post('urutan');
 
-    
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('templates/topbar', $data);
-            $this->load->view('category/index', $data);
-            $this->load->view('templates/footer');
-        }else {
-            $slug_kategori          = url_title($this->input->post('nama_kategori'), 'dash', TRUE);
+            $upload_image = $_FILES['gambar']['name'];
 
-            $data = [
-                'nama_kategori'     => $this->input->post('nama_kategori'),
-                'slug_kategori'     => $slug_kategori,
-                'urutan'            => $this->input->post('urutan'),
-            ];
-            $this->db->insert('categori', $data);
+            $config['upload_path'] = './assets/images/produk';
+            $config['allowed_types'] = 'jpg|png|gif|jpeg';
+            $config['max_size']             = 5000;
+            $config['max_width']            = 5000;
+            $config['max_height']           = 5000;
+
+            $this->load->library('upload', $config);
+
+            $path = './assets/images/produk';
+            $_id = $this->db->get_where('categori', ['id_kategori' => $id_kategori])->row_array();
+
+            if($upload_image) {
+
+                unlink($path.$_id['gambar']);
+
+                if ($this->upload->do_upload('gambar')) {
+                    $new_image = $this->upload->data('file_name');
+                    $this->db->set('gambar', $new_image);
+                } else {
+                    echo $this->upload->display_errors();
+                }
+            }
+            
+            $this->db->set('nama_kategori', $nama_kategori);
+            $this->db->set('slug_kategori', $slug_kategori);
+            $this->db->set('urutan', $urutan);
+            $this->db->where('id_kategori', $id_kategori);
+            $this->db->update('categori');
             $this->session->set_flashdata('message',
             '<div class="alert alert-success" role="alert">
-               Category Added!
+               Category Updated!
             </div>');
             redirect('Category/');
         }
-    }
+
+
+    // public function addCatt()
+    // {
+    //     $category = $this->M_Categori->listing();
+    //     $data = [
+    //         'title'         => 'Category',
+    //         'category'      => $category,
+    //         'users'         => $this->db->get_where('users', ['email' => 
+    //                             $this->session->userdata('email')])->row_array(),
+    //     ];
+
+    //     $this->form_validation->set_rules('nama_kategori', 'Nama Kategori', 'required');
+    //     $this->form_validation->set_rules('slug_kategori', 'Slug Kategori', 'required');
+    //     $this->form_validation->set_rules('urutan', 'Urutan', 'required');
+
+    
+    //     if ($this->form_validation->run() == FALSE) {
+    //         $this->load->view('templates/header', $data);
+    //         $this->load->view('templates/sidebar', $data);
+    //         $this->load->view('templates/topbar', $data);
+    //         $this->load->view('category/index', $data);
+    //         $this->load->view('templates/footer');
+    //     }else {
+    //         $slug_kategori          = url_title($this->input->post('nama_kategori'), 'dash', TRUE);
+
+    //         $data = [
+    //             'nama_kategori'     => $this->input->post('nama_kategori'),
+    //             'slug_kategori'     => $slug_kategori,
+    //             'urutan'            => $this->input->post('urutan'),
+    //         ];
+    //         $this->db->insert('categori', $data);
+    //         $this->session->set_flashdata('message',
+    //         '<div class="alert alert-success" role="alert">
+    //            Category Added!
+    //         </div>');
+    //         redirect('Category/');
+    //     }
+    // }
 
     public function UpCat($id_kategori)
     {

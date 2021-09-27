@@ -53,7 +53,7 @@
 										<label for="facebook">Facebook</label>
 										<input type="text" class="form-control form-control-user" id="facebook"
 											name="facebook" placeholder="Facebook"
-											value="<?= $configuration['facebook'] ?>" disabled required>
+											value="<?= $configuration['facebook'] ?>" disabled>
 										<?= form_error('facebook', ' <small class="text-danger pl-3">', '</small>'); ?>
 									</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">

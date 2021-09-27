@@ -49,63 +49,18 @@
 
 			<ul>
 				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Search
-					</a>
+					<a href="<?= base_url()?>" class="s-text7">Home</a>
 				</li>
 
 				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						About Us
-					</a>
+					<a href="<?= base_url('productdetail/')?>" class="s-text7">Product</a>
 				</li>
 
 				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Contact Us
-					</a>
-				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Returns
-					</a>
+					<a href="<?=base_url('home/about/')?>" class="s-text7">About</a>
 				</li>
 			</ul>
 		</div>
-
-		<!-- <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-			<h4 class="s-text12 p-b-30">
-				Help
-			</h4>
-
-			<ul>
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Track Order
-					</a>
-				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Returns
-					</a>
-				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						Shipping
-					</a>
-				</li>
-
-				<li class="p-b-9">
-					<a href="#" class="s-text7">
-						FAQs
-					</a>
-				</li>
-			</ul>
-		</div> -->
-
 		<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
 			<h4 class="s-text12 p-b-30">
 				Newsletter
@@ -136,8 +91,6 @@
 	</div>
 </footer>
 
-
-
 <!-- Back to top -->
 <div class="btn-back-to-top bg0-hov" id="myBtn">
 	<span class="symbol-btn-back-to-top">
@@ -166,10 +119,10 @@
 		dropdownParent: $('#dropDownSelect1')
 	});
 
-	
+
 	$(".selection-2").select2({
-			minimumResultsForSearch: 20,
-			dropdownParent: $('#dropDownSelect2')
+		minimumResultsForSearch: 20,
+		dropdownParent: $('#dropDownSelect2')
 	});
 
 </script>
@@ -197,11 +150,11 @@
 		});
 	});
 
-	$('.btn-addcart-product-detail').each(function(){
-			var nameProduct = $('.product-detail-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-			});
+	$('.btn-addcart-product-detail').each(function () {
+		var nameProduct = $('.product-detail-name').html();
+		$(this).on('click', function () {
+			swal(nameProduct, "is added to wishlist !", "success");
+		});
 	});
 
 </script>

@@ -42,8 +42,10 @@
 												<!-- <a href="#" class="badge badge-light"><i class="fa fa-edit"></i></a>
 												<a href="#" class="badge badge-dark" id="delete"><i
 														class="fa fa-trash"></i></a> -->
-												<a href="#" class="badge badge-light" data-toggle="modal"
-													data-target="#update<?= $c['id_kategori']; ?>"><i class="fa fa-edit"></i></a>
+												<!-- <a href="#" class="badge badge-light" data-toggle="modal"
+													data-target="#update<?= $c['id_kategori']; ?>"><i class="fa fa-edit"></i></a> -->
+												<a href="<?= base_url('category/EditCategory/' . $c['id_kategori'])?>"
+													class="badge badge-dark"><i class="fa fa-edit"></i></a>
 												<a href="<?= base_url('category/delCat/' . $c['id_kategori'])?>"
 													class="badge badge-dark" id="delete"><i class="fa fa-trash"></i></a>
 											</td>

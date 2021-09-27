@@ -2,7 +2,7 @@
 <?php if ($users['role_id'] == 0) { ?>
 <aside class="menu-sidebar2">
 	<div class="logo">
-		<a href="#">
+		<a href="<?= base_url('Admin/')?>">
 			<img src="<?= base_url('assets/admin/'); ?>images/icon/logo-white.png" alt="Spectrum Cahaya Nusantara" />
 		</a>
 	</div>
