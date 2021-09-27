@@ -147,4 +147,42 @@ class Productdetail extends CI_Controller
         $this->load->view('layout/footer',$data);
 
     }
+
+    
+    // public function search()
+    // {
+    //     $search = $this->input->post('search');
+    //     $data = [
+    //         'data' => $this->M_Product->get_keyword($search),
+    //         // 'data1' => $this->db->get('produk')->result_array(),
+    //     ];
+
+    //     $this->load->view('layout/head',$data);
+    //     $this->load->view('layout/header',$data);
+    //     $this->load->view('layout/navbar',$data);
+    //     $this->load->view('productdetail/detail', $data);
+    //     $this->load->view('layout/footer',$data);
+    // }
+    public function search()
+    {
+        $site               = $this->M_Config->listing();
+        $listing_kategori   = $this->M_Product->listing_kategori();
+        // $showcpro = $this->db->get('produk')->result_array();
+        $total              = $this->M_Product->total_produk();
+        $keywords   = $this->input->get('keywords');
+        
+        $data = [
+            'produk'                => $this->M_Product->get_keyword($keywords),
+            'title'                 => 'Product',
+            'site'                  => $site,
+            'listing_kategori'      => $listing_kategori,
+            // 'pagin'                 => $this->pagination->create_links()
+
+        ];
+        $this->load->view('layout/head',$data);
+        $this->load->view('layout/header',$data);
+        $this->load->view('layout/navbar',$data);
+        $this->load->view('productdetail/search', $data);
+        $this->load->view('layout/footer',$data);
+    }
 }

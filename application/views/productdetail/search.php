@@ -85,7 +85,7 @@
 						</li>
 						<?php } ?>
 					</ul>
-                    <form action="<?= base_url('productdetail/search'); ?>" method="get">
+                    <form action="<?= base_url('Productdetail/search'); ?>" method="get">
 					<div class="search-product pos-relative bo4 of-hidden">
 						<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="keywords"
 							placeholder="Search Products...">
@@ -160,9 +160,9 @@
 				</div>
 
 				<!-- Pagination -->
-				<div class="pagination flex-m flex-w p-t-26">
+				<!-- <div class="pagination flex-m flex-w p-t-26">
 					<?= $pagin ?>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

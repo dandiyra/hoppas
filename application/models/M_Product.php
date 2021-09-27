@@ -201,4 +201,14 @@ class M_Product extends CI_Model
     {
         $this->db->insert('gambar', $data);
     }
+
+    public function get_keyword($keywords)
+    {
+        $this->db->select('*');
+        $this->db->from('produk');
+        $this->db->like('nama_produk', $keywords);
+        $this->db->or_like('keywords', $keywords);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }
