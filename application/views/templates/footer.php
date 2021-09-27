@@ -126,87 +126,8 @@
 	});
 
 </script>
-<script>
-	$(document).ready(function () {
-		$('#division').change(function () {
-			var id = $(this).val();
-			$.ajax({
-				url: "<?= base_url(); ?>/Admin/getSubDivision",
-				method: "POST",
-				dataType: "JSON",
-				data: {
-					id: id
-				},
-				success: function (array) {
-					var html = '';
-					for (let index = 0; index < array.length; index++) {
-						html += "<option>" + array[register].subDivision + "</option>"
 
-					}
-					$('#subdivision').html(html);
-				}
-			})
-		})
-	})
 
-</script>
-
-<script>
-$(document).ready(function() {
-
-    $('#division').change(function() {
-        var value = $(this).val();
-        $.ajax({
-            url: "<?php echo site_url('FormReq/GetStaff');?>",
-            method: "POST",
-            data: {
-                division: value
-            },
-            async: true,
-            dataType: 'json',
-            success: function(data) {
-                var html = '';
-                var i;
-                html += '<option value="">-- Please select staff --</option>';
-                for (i = 0; i < data.length; i++) {
-                    html += '<option value=' + data[i].email + '>' + data[i]
-                        .name + '</option>';
-                }
-                $('#nameRequester').html(html);
-
-            }
-        });
-        return false;
-    });
-
-});
- </script>
-
-<script type="text/javascript">
-        $(document).ready(function(){
- 
-            $('#division').change(function(){ 
-                var id=$(this).val();
-                $.ajax({
-                    url : "<?php echo site_url('M_div/get_subdivision');?>",
-                    method : "POST",
-                    data : {id: id},
-                    async : true,
-                    dataType : 'json',
-                    success: function(data){
-                         
-                        var html = '';
-                        var i;
-                        for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i].id_sdiv+'>'+data[i].subDivision+'</option>';
-                        }
-                        $('#subdivision').html(html);
-                    }
-                });
-                return false;
-            }); 
-        });
-    </script>
 </body>
 </html>
 <!-- end document-->
